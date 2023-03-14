@@ -1,6 +1,7 @@
 package com.dlg.pages;
 
 import com.dlg.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,6 +21,9 @@ public class dlgPage {
 
     @FindBy(id = "onetrust-accept-btn-handler")
     public WebElement acceptCookies;
+
+    @FindBy(xpath = "//button[@class='dg-alert__close']")
+    public WebElement closeInfo;
 
     @FindBy(xpath = "//ul[@class=\"primary-menu \"]/li")
     public List<WebElement> headers;
@@ -45,7 +49,15 @@ public class dlgPage {
     @FindBy(xpath = "(//input[@role='searchbox'])[1]")
     public WebElement searchBox;
 
+
     @FindBy(xpath = "(//input[@type='submit'])[1]")
     public WebElement searchSign;
+
+    @FindBy(xpath = "(//a[@href='/en/who-we-are/values.html'])[3]")
+    public WebElement resultTitle;
+
+    @FindBy(xpath = "//h1")
+    public WebElement resultTitleCheck;
+
 
 }

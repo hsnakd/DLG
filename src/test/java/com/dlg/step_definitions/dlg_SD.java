@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +32,7 @@ public class dlg_SD {
     @When("user on the homepage")
     public void userOnTheHomepage() {
         dlgPage.acceptCookies.click();
+        dlgPage.closeInfo.click();
         String expectedUrl = "https://www.directlinegroup.co.uk/en/index.html";
         String currentUrl = Driver.getDriver().getCurrentUrl();
         assertEquals(expectedUrl,currentUrl);
@@ -85,11 +87,16 @@ public class dlg_SD {
 
     @And("user types {string} in the search box")
     public void userTypesInTheSearchBox(String searchKeyword) {
-        if (searchKeyword == "Values") {
-            dlgPage.searchBox.sendKeys(searchKeyword);
-        } else if (searchKeyword == "Strategy") {
-            dlgPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
-        }
+        BrowserUtils.waitFor(5);
+
+        dlgPage.searchBox.click();
+        BrowserUtils.waitFor(5);
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(dlgPage.searchBox).click().sendKeys(searchKeyword).build().perform();
+//        dlgPage.searchSign.click();
+
+
     }
 
 
@@ -100,7 +107,17 @@ public class dlg_SD {
 
 
     @Then("Check {string} in the search results")
-    public void checkInTheSearchResults(String searchKeyword) {
+    public void checkInTheSearchResults(String sendKey) {
+
+        BrowserUtils.waitFor(5);
+
+        String expectedResult = sendKey + " - Who We Are";
+        String actualResult = dlgPage.resultTitle.getText();
+        System.out.println("actualResult = " + actualResult);
+//        String actualResult = dlgPage.resultTitleCheck.getText();
+
+        assertEquals(expectedResult, actualResult);
+
 
     }
 

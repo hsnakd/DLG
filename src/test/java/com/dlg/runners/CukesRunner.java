@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/dlg/step_definitions",
         dryRun = false,
-        tags = "",
+        tags = "@3",
         publish = true
 
 

@@ -1,5 +1,6 @@
 package com.dlg.utilities;
 
+import com.dlg.pages.dlgPage;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -485,31 +486,6 @@ for given duration
         }
     }
 
-    public static int iframe(By element) {
-        CrmProjectTask_Page taskPage = new CrmProjectTask_Page();
-
-        int size =  Driver.getDriver().findElements(By.tagName("iframe")).size();
-        System.out.println("size = " + size);
-        int i=0;
-        int frameNumber=0;
-
-        try {
-            for( i=0; i<size; i++){
-                Driver.getDriver().switchTo().frame(i);
-                if ( (taskPage.addPeopleCheck.isDisplayed()) ) {
-                    System.out.println("iframe number : "  + " " + i);
-                    frameNumber=i;
-                }
-
-                Driver.getDriver().switchTo().defaultContent();
-            }
-        } catch (NoSuchElementException | StaleElementReferenceException | ElementNotInteractableException ignored) {
-        return frameNumber;
-        }
-
-        return i;
-
-    }
 
     public static int switchToIFrameWithElement(WebElement element) {
 
@@ -543,6 +519,8 @@ for given duration
 //        System.out.println("returned element succesfully");
         return frameNumber;
     }
+
+
 }
 
 

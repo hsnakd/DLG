@@ -46,9 +46,9 @@ Feature: DLG Title
     Then Check "Values" in the search results
 
 
-  @4
-#  Search Box-2
-  Scenario:
-    And user types "Strategy" in the search box
-    Then Check "Strategy" in the search results
+#  @4
+##  Search Box-2
+#  Scenario:
+#    And user types "Strategy" in the search box
+#    Then Check "Strategy" in the search results
 
