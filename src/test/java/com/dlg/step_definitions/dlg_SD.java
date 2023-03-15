@@ -95,8 +95,6 @@ public class dlg_SD {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(dlgPage.searchBox).click().sendKeys(searchKeyword).build().perform();
 //        dlgPage.searchSign.click();
-
-
     }
 
 
