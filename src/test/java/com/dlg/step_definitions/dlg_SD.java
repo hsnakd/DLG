@@ -31,7 +31,9 @@ public class dlg_SD {
 
     @When("user on the homepage")
     public void userOnTheHomepage() {
+        BrowserUtils.waitFor(1);
         dlgPage.acceptCookies.click();
+        BrowserUtils.waitFor(1);
         dlgPage.closeInfo.click();
         String expectedUrl = "https://www.directlinegroup.co.uk/en/index.html";
         String currentUrl = Driver.getDriver().getCurrentUrl();
@@ -74,8 +76,8 @@ public class dlg_SD {
     @Then("Verify following headers at the top of the page with list")
     public void verifyFollowingHeadersAtTheTopOfThePageWithList(List<String> expectedHeaders) {
         List<String> actualHeaders = BrowserUtils.getElementsText(dlgPage.headers);
-        System.out.println("expectedHeader = " + expectedHeaders);
-        System.out.println("actualHeaders = " + actualHeaders);
+//        System.out.println("expectedHeader = " + expectedHeaders);
+//        System.out.println("actualHeaders = " + actualHeaders);
 
         assertEquals(expectedHeaders, actualHeaders);
 
@@ -87,10 +89,10 @@ public class dlg_SD {
 
     @And("user types {string} in the search box")
     public void userTypesInTheSearchBox(String searchKeyword) {
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(3);
 
         dlgPage.searchBox.click();
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(3);
 
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(dlgPage.searchBox).click().sendKeys(searchKeyword).build().perform();
@@ -107,11 +109,11 @@ public class dlg_SD {
     @Then("Check {string} in the search results")
     public void checkInTheSearchResults(String sendKey) {
 
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(3);
 
         String expectedResult = sendKey + " - Who We Are";
         String actualResult = dlgPage.resultTitle.getText();
-        System.out.println("actualResult = " + actualResult);
+//        System.out.println("actualResult = " + actualResult);
 //        String actualResult = dlgPage.resultTitleCheck.getText();
 
         assertEquals(expectedResult, actualResult);

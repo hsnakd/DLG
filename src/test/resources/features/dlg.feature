@@ -11,7 +11,7 @@ Feature: DLG Title
 
   @1
 #  Headers with Scenario Outline
-  Scenario Outline: Check headers at the top of the page
+  Scenario Outline: Check headers at the top of the page one by one
     And User should see there are 6 headings at the top of the page
     Then Verify "<title>" headers at the top of the page
     Examples:
@@ -26,7 +26,7 @@ Feature: DLG Title
 
   @2 @smoke
 #  Headers with Scenario
-  Scenario: Check headings at the top of the page
+  Scenario: Check headers at the top of the page
     And User should see there are 6 headings at the top of the page
     Then Verify following headers at the top of the page with list
 
@@ -40,15 +40,8 @@ Feature: DLG Title
 
   @3
 #  Search Box-1
-  Scenario:
+  Scenario:  Search box
     And user types "Values" in the search box
     And user click the search sign
     Then Check "Values" in the search results
-
-
-#  @4
-##  Search Box-2
-#  Scenario:
-#    And user types "Strategy" in the search box
-#    Then Check "Strategy" in the search results
 
